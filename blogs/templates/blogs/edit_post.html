@@ -1,0 +1,12 @@
+{% extends 'blogs/base.html' %}
+{% load django_bootstrap5 %}
+{% block page_header %}
+    <h2>Edit <a href="{% url 'blogs:index' %}">{{ post.title }}</a></h2>
+{% endblock page_header %}
+{% block content %}
+    <form action="{% url 'blogs:edit_post' post.id %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-outline-success" name="submit">save changes</button>
+    </form>
+{% endblock content %}

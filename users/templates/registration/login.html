@@ -1,0 +1,13 @@
+{% extends 'blogs/base.html' %}
+{% load django_bootstrap5 %}
+{% block page_header %}
+    <h2>Log in</h2>
+{% endblock page_header %}
+{% block content %}
+    <form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-outline-success" name="submit">log in</button>
+    <input type="hidden" name="next" value="{% url 'blogs:index' %}" />
+    </form>
+{% endblock content %}
